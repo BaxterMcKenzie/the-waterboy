@@ -2,11 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import wooCommerceApi from "../woocommerceApi";
 import { CartContext } from "../context/CartContext";
 import PageHeader from "./PageHeader";
-
 import Seo from "./Seo";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const [showPopup, setShowPopup] = useState(false); // State for controlling popup visibility
   const { addToCart } = useContext(CartContext); // Access addToCart from CartContext
 
   useEffect(() => {
@@ -23,17 +23,25 @@ const ProductList = () => {
 
   const handleAddToCart = (product) => {
     addToCart(product); // Add product to cart
+    setShowPopup(true); // Show popup
+    setTimeout(() => {
+      setShowPopup(false); // Hide popup after 2 seconds
+    }, 2000);
   };
 
   return (
     <>
-       <Seo
+      <Seo
         title="Shop - The Waterboy"
         description="Browse this amazing shop"
         url={window.location.href}
       />
 
       <PageHeader title="Products" image_url="/header-bg-img/shop.webp" />
+
+      {/* Popup for "Added to Cart" message */}
+      {showPopup && <div className="popup">Added to Cart!</div>}
+
       <div className="products">
         <ul>
           {products.map((product) => (
@@ -59,6 +67,25 @@ const ProductList = () => {
           ))}
         </ul>
       </div>
+
+      <style jsx>{`
+        .popup {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          padding: 10px 20px;
+          background-color: #4caf50;
+          color: white;
+          border-radius: 5px;
+          z-index: 1000;
+          animation: fade-in-out 2s ease-in-out;
+        }
+
+        @keyframes fade-in-out {
+          0%, 100% { opacity: 0; }
+          10%, 90% { opacity: 1; }
+        }
+      `}</style>
     </>
   );
 };

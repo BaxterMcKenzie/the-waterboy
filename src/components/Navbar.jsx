@@ -9,7 +9,7 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 
 const baseUrl = import.meta.env.VITE_WP_BASE_URL;
 
-const Navbar = () => {
+const Navbar = ({style}) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mobileMenu } = useCustomizer();
   const [logoUrl, setLogoUrl] = useState();
@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav className={`navbar ${isOpen ? "menu-open" : ""}`}>
+      <nav className={`navbar ${isOpen ? "menu-open" : ""}`} style={style}>
         <NavLink to="/" className="logo">
           <img className="nav-logo" src={logoUrl} alt="Website Logo" />
         </NavLink>

@@ -2,9 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-const Footer = () => {
+const Footer = ({style}) => {
   return (
-    <footer>
+    <footer style={style}>
       <div className="social">
 
         <div className="left-footer">

@@ -115,7 +115,6 @@ const Contact = () => {
       />
       <PageHeader title="contact" image_url="/header-bg-img/contact.jpg" />
       <div id="contact-container" className="container">
-        <h2>Contact Us</h2>
         <ContactForm />
       </div>
     </>

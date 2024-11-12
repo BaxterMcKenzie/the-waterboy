@@ -37,7 +37,7 @@ const ProductList = () => {
         url={window.location.href}
       />
 
-      <PageHeader title="Products" image_url="/header-bg-img/shop.webp" />
+      <PageHeader title="Shop" image_url="/header-bg-img/shop.webp" />
 
       {/* Popup for "Added to Cart" message */}
       {showPopup && <div className="popup">Added to Cart!</div>}
@@ -74,8 +74,9 @@ const ProductList = () => {
           top: 20px;
           right: 20px;
           padding: 10px 20px;
-          background-color: #4caf50;
-          color: white;
+          background-color: #ffd300;
+          color: black;
+          font-weight: 600;
           border-radius: 5px;
           z-index: 1000;
           animation: fade-in-out 2s ease-in-out;

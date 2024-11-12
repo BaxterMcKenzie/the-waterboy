@@ -8,11 +8,13 @@ import Location from '../pages/Location'; // Ensure you import the Location comp
 import EventType from '../pages/EventType';
 import Event from '../components/Event';
 import Cart from "../pages/Cart";
-import Donate from '../pages/Donate'; // Import your Donate component
+import Donate from '../pages/Donate';
 import ProductList from './ProductList';
 import Sponsors from '../pages/Sponsors';
 import Sponsor from './Sponsor';
 import SponsorType from '../pages/SponsorType';
+import GetInvolved from '../pages/GetInvolved';
+import GetInvolvedPost from '../components/GetInvolvedPost'; // Import your GetInvolvedPost component
 
 const Links = () => {
     return (
@@ -28,8 +30,10 @@ const Links = () => {
             <Route path="/sponsor-type/:id" element={<SponsorType />} />
             <Route path="/sponsor/:id" element={<Sponsor />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/donate" element={<Donate />} /> {/* Add this line */}
+            <Route path="/donate" element={<Donate />} />
             <Route path="/shop" element={<ProductList />} />
+            <Route path="/get-involved" element={<GetInvolved />} />
+            <Route path="/get-involved/:id" element={<GetInvolvedPost />} /> {/* Add single Get Involved post route */}
         </Routes>
     );
 }

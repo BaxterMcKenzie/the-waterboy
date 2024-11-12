@@ -38,7 +38,6 @@ const Cart = () => {
 
       <PageHeader title="Cart" image_url="/header-bg-img/cart.webp" />
       <div className="cart">
-        <h1>Cart</h1>
         {cart.length === 0 ? (
           <p>Your Cart is empty.</p>
         ) : (
@@ -52,23 +51,25 @@ const Cart = () => {
                   <img
                     src={item.images[0].src}
                     alt={item.images[0].alt || item.name}
-                    style={{ width: "100px", height: "100px" }}
+                    className="cart-item-image"
                   />
                 )}
 
                 <p>Price: ${parseFloat(item.prices.price / 100).toFixed(2)}</p>
                 <p>Quantity: {item.quantity}</p>
-                <button onClick={() => handleDecrement(item)}>-</button>
-                <button onClick={() => handleIncrement(item)}>+</button>
-                <button onClick={() => removeFromCart(item.id)}>
-                  Remove Item
-                </button>
+                <div className="cart-buttons">
+                  <button onClick={() => handleDecrement(item)}>-</button>
+                  <button onClick={() => handleIncrement(item)}>+</button>
+                  <button onClick={() => removeFromCart(item.id)}>
+                    Remove Item
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
         )}
         <h3>Total: ${totalPrice.toFixed(2)}</h3>
-        <button>Proceed to Checkout</button>
+        <button className="checkout-btn">Proceed to Checkout</button>
       </div>
     </>
   );

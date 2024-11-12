@@ -6,14 +6,13 @@ import { CartContext } from "../context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 
-
 const baseUrl = import.meta.env.VITE_WP_BASE_URL;
 
-const Navbar = ({style}) => {
+const Navbar = ({ style }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mobileMenu } = useCustomizer();
   const [logoUrl, setLogoUrl] = useState();
-    const { cart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen); // toggle between true/false
@@ -102,6 +101,18 @@ const Navbar = ({style}) => {
               <span className="underlay">Events</span>
             </NavLink>
           </li>
+
+          <li>
+            <NavLink
+              to="/get-involved"
+              onClick={closeMenu}
+              className={({ isActive }) => (isActive ? "active-link" : "")}
+            >
+              <span className="text">Get Involved</span>
+              <span className="underlay">Get Involved</span>
+            </NavLink>
+          </li>
+
           <li>
             <NavLink
               to="/sponsors"
@@ -132,7 +143,9 @@ const Navbar = ({style}) => {
             >
               <span className="text">Cart</span>
               <span className="underlay">Cart</span>
-              {totalItems > 0 && <span className="cart-span">{totalItems}</span>}
+              {totalItems > 0 && (
+                <span className="cart-span">{totalItems}</span>
+              )}
             </NavLink>
           </li>
 

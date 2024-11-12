@@ -6,6 +6,7 @@ import Seo from "../components/Seo";
 
 const baseUrl = import.meta.env.VITE_WP_API_BASEURL;
 
+// Component to display the location name and header
 const LocationName = ({ location }) => {
   return (
     <>
@@ -15,6 +16,7 @@ const LocationName = ({ location }) => {
   );
 };
 
+// Component to display all events for the given location
 const AllEventsInLocation = ({ params }) => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,11 +24,9 @@ const AllEventsInLocation = ({ params }) => {
   const endpoint = `${baseUrl}/events?location=${params.id}&_embed`;
 
   useEffect(() => {
-    console.log("Fetching events from:", endpoint); // Debugging log
     axios
       .get(endpoint)
       .then((res) => {
-        console.log("Events Data:", res.data); // Inspect the response data
         setEvents(res.data);
         setLoading(false);
       })
@@ -41,7 +41,6 @@ const AllEventsInLocation = ({ params }) => {
   const renderedEvents =
     events.length > 0 ? (
       events.map((event, index) => {
-        // Get the featured image URL
         const featuredImage =
           event?._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
           "https://via.placeholder.com/150";
@@ -66,19 +65,73 @@ const AllEventsInLocation = ({ params }) => {
   return <>{renderedEvents}</>;
 };
 
+// Component to display all "Get Involved" posts for the given location
+const AllGetInvolvedInLocation = ({ params }) => {
+  const [getInvolvedPosts, setGetInvolvedPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+  const endpoint = `${baseUrl}/get_involved?location=${params.id}&_embed`;
+
+  useEffect(() => {
+    axios
+      .get(endpoint)
+      .then((res) => {
+        setGetInvolvedPosts(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, [endpoint]);
+
+  if (loading) return <div>Loading Get Involved posts...</div>;
+
+  return (
+    <>
+      <h2>Get Involved</h2>
+      <div className="get-involved-grid">
+        {getInvolvedPosts.length > 0 ? (
+          getInvolvedPosts.map((post, index) => {
+            const featuredImage =
+              post?._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+              "https://via.placeholder.com/150";
+
+            return (
+              <div className="get-involved-item" key={index}>
+                <Link className="get-involved-link" to={`/get-involved/${post.id}`}>
+                  <img
+                    src={featuredImage}
+                    alt={post.title.rendered}
+                    className="get-involved-image"
+                  />
+                  <h4 className="name">{post.title.rendered}</h4>
+                </Link>
+              </div>
+            );
+          })
+        ) : (
+          <p>No Get Involved posts found for this location.</p>
+        )}
+      </div>
+    </>
+  );
+};
+
+// Main Location component
 const Location = () => {
   const [location, setLocation] = useState({});
   const [loading, setLoading] = useState(true);
   const params = useParams();
 
-  const locationEndpoint = `${baseUrl}/location/${params.id}`;
+  // Ensure the correct endpoint for fetching location data
+  const locationEndpoint = `${baseUrl}/wp-json/wp/v2/locations/${params.id}`;
 
   useEffect(() => {
-    console.log("Fetching location from:", locationEndpoint); // Debugging log
     axios
       .get(locationEndpoint)
       .then((res) => {
-        console.log("Location Data:", res.data); // Inspect the response data
         setLocation(res.data);
         setLoading(false);
       })
@@ -100,8 +153,15 @@ const Location = () => {
 
       <div id="eventsViaLocation" className="page-container">
         <LocationName location={location} />
+        
+        {/* Events Section */}
         <div className="event-grid">
           <AllEventsInLocation params={params} />
+        </div>
+
+        {/* Get Involved Section */}
+        <div className="get-involved-section">
+          <AllGetInvolvedInLocation params={params} />
         </div>
       </div>
     </>

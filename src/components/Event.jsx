@@ -85,6 +85,9 @@ const Event = () => {
     return <>Loading...</>;
   }
 
+  // Access the 'events_dates' custom field
+  const eventDates = event?.acf?.events_dates; // Replace with your actual custom field key
+
   // Assuming event has a property 'locationId' to reference back to the location
   const locationId = event?._embedded?.["wp:term"].find(
     (link) => link.taxonomy === "location"
@@ -105,6 +108,14 @@ const Event = () => {
       />
       <div key={event.slug} className="single-post-container">
         <div dangerouslySetInnerHTML={{ __html: event.content.rendered }} />
+
+        {/* Render custom field 'events_dates' */}
+        {eventDates && (
+          <div className="event-dates">
+            <strong>Event Date/Time:</strong> {eventDates}
+          </div>
+        )}
+
         <Taxonomies event={event} />
 
         {/* Back to Location Link */}

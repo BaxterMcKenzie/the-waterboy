@@ -111,6 +111,7 @@ p {
   text-transform: uppercase;
   pointer-events: none;
   transition: color 0.3s ease;
+  width: 100%;
 }
 
 .nav-links li a:hover .text {
@@ -572,31 +573,6 @@ em {
   line-height: 10px;
 }
 
-/* Contact Container */
-
-#contact-container.container {
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  label {
-    margin-right: 10px;
-  }
-
-  input {
-    width: 100%;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
 /* Footer */
 
 footer {
@@ -806,6 +782,193 @@ select {
   box-shadow: none;
   transform: translate(-6px, 4px); /* Use transform for smoother animation */
 }
+
+/* Cart CSS */
+/* Cart Layout */
+.cart ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 20px;
+}
+
+.cart li {
+  border: 8px solid #ffd300;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  box-shadow: -6px 6px 0px -2px #f48520;
+  -webkit-box-shadow: -6px 6px 0px -2px #f48520;
+  -moz-box-shadow: -6px 6px 0px -2px #f48520;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.cart h2 {
+  margin-bottom: 1rem;
+}
+
+.cart-item-image {
+  width: 200px;
+  height: 200px;
+  margin: 1rem 0;
+}
+
+.cart-buttons button {
+  margin: 0.5rem;
+  padding: 10px 20px;
+  border: none;
+  color: #fffcd7;
+  background-color: #20b0b4;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: -4px 6px 0px -2px rgba(37, 101, 176, 1);
+}
+
+.cart-buttons button:hover {
+  background-color: #ffd300;
+  box-shadow: -4px 6px 0px -2px rgba(244, 133, 32, 1);
+  cursor: pointer;
+}
+
+.cart-buttons button:active {
+  box-shadow: none;
+  transform: translate(-6px, 4px);
+}
+
+/* Checkout Button */
+.checkout-btn {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  border: none;
+  color: #fffcd7;
+  background-color: #20b0b4;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: -4px 6px 0px -2px rgba(37, 101, 176, 1);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #ffd300;
+  box-shadow: -4px 6px 0px -2px rgba(244, 133, 32, 1);
+  cursor: pointer;
+}
+
+.checkout-btn:active {
+  box-shadow: none;
+  transform: translate(-6px, 4px);
+}
+
+/* Scoped styles for Contact Page */
+#contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+#contact-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+#contact-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #fff;
+  border: 8px solid #ffd300;
+  border-radius: 20px;
+  box-shadow: -6px 6px 0px -2px #f48520;
+  -webkit-box-shadow: -6px 6px 0px -2px #f48520;
+  -moz-box-shadow: -6px 6px 0px -2px #f48520;
+}
+
+#contact-container form div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#contact-container label {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+#contact-container input,
+#contact-container textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+#contact-container input:focus,
+#contact-container textarea:focus {
+  border-color: #20b0b4;
+  outline: none;
+}
+
+#contact-container textarea {
+  height: 150px;
+  resize: none;
+}
+
+#contact-container button.regular-button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  background-color: #20b0b4;
+  color: #fffcd7;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: -4px 6px 0px -2px rgba(37, 101, 176, 1);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#contact-container button.regular-button:hover {
+  background-color: #ffd300;
+  box-shadow: -4px 6px 0px -2px rgba(244, 133, 32, 1);
+  cursor: pointer;
+}
+
+#contact-container button.regular-button:active {
+  box-shadow: none;
+  transform: translate(-6px, 4px);
+}
+
+/* Success/Error Messages */
+#contact-container h3 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+#contact-container p {
+  font-size: 1rem;
+  color: #333;
+}
+
 
 /* Loading Spinner */
 .loading-spinner {

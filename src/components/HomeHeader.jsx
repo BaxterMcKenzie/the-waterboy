@@ -22,6 +22,10 @@ const HomeHeader = () => {
     }
   };
 
+  const handleGetInvolvedClick = () => {
+    navigate("/get-involved");
+  };
+
   const handleContactClick = () => {
     navigate("/contact");
   };
@@ -62,7 +66,7 @@ const HomeHeader = () => {
                 Stronger People. <br /> Stronger Communities.
               </span>
             </h2>
-            <button className="hero-button">Get Involved</button>
+            <button className="hero-button" onClick={handleGetInvolvedClick}>Get Involved</button>
           </div>
         </SwiperSlide>
 

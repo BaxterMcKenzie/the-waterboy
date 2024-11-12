@@ -50,25 +50,29 @@ const Events = () => {
                 </span>
               </h4>
             </div>
-
+      
             <div className="image-info">
               <div className="image-left">
                 <img src={getFeaturedImage(event)} alt={event.title.rendered} />
               </div>
-
+      
               <div className="text-right">
-                <div
-                  dangerouslySetInnerHTML={{ __html: event.content.rendered }}
-                />
-                <div>Key: {event.slug + "-" + index}</div>
-                <li key={event.slug + "-" + index}>
-                  <a href={`#/event/${event.id}`}>Read More...</a>
-                </li>
+                <div dangerouslySetInnerHTML={{ __html: event.content.rendered }} />
+                {/* <div>Key: {event.slug + "-" + index}</div> */}
+                <div key={event.slug + "-" + index}> <br/>
+                  <button
+                    onClick={() => (window.location.href = `#/event/${event.id}`)}
+                    className="primary-button"
+                  >
+                    Read More...
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </>
       );
+      
     });
 
     // return of events component
@@ -78,9 +82,9 @@ const Events = () => {
   return (
     <>
       <Seo
-      title="Events - The Waterboy"
-      description="Browse these amanzing events"
-      url={window.location.href}
+        title="Events - The Waterboy"
+        description="Browse these amanzing events"
+        url={window.location.href}
       />
 
       <PageHeader title="Events" image_url="/header-bg-img/events.png" />

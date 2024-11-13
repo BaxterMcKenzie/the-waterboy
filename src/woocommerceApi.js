@@ -6,10 +6,10 @@ const CONSUMER_SECRET = import.meta.env.VITE_WOOCOMMERCE_CONSUMER_SECRET;
 
 const wooCommerceApi = axios.create({
     baseURL: API_URL,
-    // auth: {
-    //     username: CONSUMER_KEY,
-    //     password: CONSUMER_SECRET,
-    // },
+    auth: {
+        username: CONSUMER_KEY,
+        password: CONSUMER_SECRET,
+    },
     params: {
         consumer_key: CONSUMER_KEY,
         consumer_secret: CONSUMER_SECRET,

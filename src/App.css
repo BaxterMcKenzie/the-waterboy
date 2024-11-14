@@ -995,24 +995,9 @@ select {
 
 /* Media Queries */
 
-@media (max-width: 960px) {
+@media (max-width: 1220px) {
   .menu-icon {
     display: flex;
-  }
-.post-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    .left-about-image {
-      width: 80%;
-    }
-
-    .right-about-content {
-      width: 65%;
-    }
   }
 
   .nav-links {
@@ -1066,6 +1051,26 @@ select {
   .nav-links li a .underlay {
     font-size: 1.8rem;
   }
+}
+
+@media (max-width: 960px) {
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .left-about-image {
+      width: 80%;
+    }
+
+    .right-about-content {
+      width: 65%;
+    }
+  }
+
 
   .image-info {
     display: flex;
